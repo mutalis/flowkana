@@ -1,0 +1,23 @@
+<h3>
+  New Farm
+</h3>
+
+<div style="max-width: 720px;">
+  <%= bootstrap_form_for @farm do |f| %>
+    <table class="table table-striped">
+      <tr>
+        <th><%= f.label :name %></th>
+        <td><%= f.text_field :name, hide_label: true %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :county %></th>
+        <td><%= f.text_field :county, hide_label: true %></td>
+      </tr>
+    </table>
+
+    <div class="pull-right">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

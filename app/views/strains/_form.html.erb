@@ -1,0 +1,45 @@
+<div style="max-width: 720px;">
+  <%= bootstrap_form_for @strain do |f| %>
+    <table class="table table-striped">
+      <tr>
+        <th><%= f.label :name %></th>
+        <td><%= f.text_field :name, hide_label: true %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :farm_id %></th>
+        <td>
+          <%= f.select :farm_id, Farm.all.map { |farm| [farm.name, farm.id] },
+                        hide_label: true %>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :family %></th>
+        <td>
+          <%= f.select :family, ['Indica', 'Indica Dominant', 'Sativa', 'Sativa Dominant'],
+                        hide_label: true %>
+        </td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :thc %></th>
+        <td><%= f.text_field :thc, hide_label: true %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :cbd %></th>
+        <td><%= f.text_field :cbd, hide_label: true %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :weight %></th>
+        <td><%= f.text_field :weight, hide_label: true %></td>
+      </tr>
+    </table>
+
+    <div class="pull-right">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

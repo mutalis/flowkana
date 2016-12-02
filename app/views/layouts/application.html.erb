@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Flowkana</title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= render 'layouts/notificatons' %>
+      <%= render 'layouts/navbar' %>
+
+      <%= yield %>
+
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

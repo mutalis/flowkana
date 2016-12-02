@@ -1,0 +1,71 @@
+<div class="page-header">
+  <h2>
+    Inventory
+
+    <div>
+      <small>
+        Showing <%= @strains.count %> strains from <%= @strains.map(&:farm).uniq.count %> farms
+      </small>
+    </div>
+  </h2>
+</div>
+
+<div style="max-width: 720px;">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Farm</th>
+        <th>County</th>
+        <th>Family</th>
+        <th>THC</th>
+        <th>CBD</th>
+        <th>Weight</th>
+        <th>Inventory Value</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @strains.find_each do |strain| %>
+        <tr>
+          <td>
+            <%= link_to strain.name, strain %>
+          </td>
+
+          <td>
+            <%= strain.farm_name %>
+          </td>
+
+          <td>
+            <%= strain.farm_county %>
+          </td>
+
+          <td>
+            <%= strain.family %>
+          </td>
+
+          <td>
+            <%= number_to_percentage strain.thc %>
+          </td>
+
+          <td>
+            <%= number_to_percentage strain.cbd %>
+          </td>
+
+          <td>
+            <%= strain.weight %>
+          </td>
+
+          <td>
+            <%= number_to_currency strain.inventory_value %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="pull-right">
+    <%= link_to 'New Farm', new_farm_path, class: 'btn btn-primary' %>
+    <%= link_to 'New Strain', new_strain_path, class: 'btn btn-primary' %>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<%= render 'header' %>
+
+<div style="max-width: 720px;">
+  <h3>
+    Details
+  </h3>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <td><%= @strain.name %></td>
+    </tr>
+
+    <tr>
+      <th>Farm</th>
+      <td><%= @strain.farm_name %></td>
+    </tr>
+
+    <tr>
+      <th>County</th>
+      <td><%= @strain.farm_county %></td>
+    </tr>
+
+    <tr>
+      <th>Family</th>
+      <td><%= @strain.family %></td>
+    </tr>
+
+    <tr>
+      <th>THC</th>
+      <td><%= number_to_percentage @strain.thc %></td>
+    </tr>
+
+    <tr>
+      <th>CBD</th>
+      <td><%= number_to_percentage @strain.cbd %></td>
+    </tr>
+
+    <tr>
+      <th>Weight</th>
+      <td><%= @strain.weight %></td>
+    </tr>
+
+    <tr>
+      <th>Inventory Value</th>
+      <td><%= number_to_currency @strain.inventory_value %></td>
+    </tr>
+  </table>
+
+  <div class="clearfix">
+    <div class="pull-right">
+      <%= link_to 'Edit Strain', edit_strain_path(@strain), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
