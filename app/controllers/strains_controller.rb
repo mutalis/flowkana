@@ -4,6 +4,15 @@ class StrainsController < ApplicationController
   end
 
   def create
+    @strain = Strain.new(strain_params)
+
+    if @strain.save
+      flash[:notice] = 'Strain created successfully'
+      redirect_to strain_path(@strain)
+    else
+      flash[:alert] = 'Strain couldn\'t be created'
+      render 'new'
+    end
   end
 
   def show
@@ -29,6 +38,6 @@ class StrainsController < ApplicationController
   private
 
   def strain_params
-    params.require(:strain).permit(:name, :farm_id, :thc, :cbd, :weight)
+    params.require(:strain).permit(:name, :farm_id, :family, :thc, :cbd, :weight, :purchase_price_per_gram)
   end
 end
