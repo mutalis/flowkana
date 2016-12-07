@@ -10,8 +10,8 @@ class StrainsController < ApplicationController
       flash[:notice] = 'Strain created successfully'
       redirect_to strain_path(@strain)
     else
-      flash[:alert] = 'Strain couldn\'t be created'
-      render 'new'
+      flash[:alert] = "Strain couldn't be created"
+      render :edit
     end
   end
 
@@ -25,10 +25,14 @@ class StrainsController < ApplicationController
 
   def update
     @strain = Strain.find(params[:id])
-    @strain.update(strain_params)
 
-    flash[:notice] = 'Strain updated successfully'
-    redirect_to strain_path(@strain)
+    if @strain.update(strain_params)
+      flash[:notice] = 'Strain updated successfully'
+      redirect_to strain_path(@strain)
+    else
+      flash[:alert] = "Strain couldn't be updated"
+      render :edit
+    end
   end
 
   def index
