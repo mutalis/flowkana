@@ -1,3 +1,4 @@
+# Strains table
 class CreateStrains < ActiveRecord::Migration[5.0]
   def change
     create_table :strains do |t|
@@ -6,7 +7,7 @@ class CreateStrains < ActiveRecord::Migration[5.0]
       t.float :thc
       t.float :cbd
       t.float :purchase_price_per_gram
-      t.float :weight
+      t.float :weight, default: 0
 
       t.timestamps
     end

@@ -57,4 +57,26 @@
       <%= link_to 'Edit Strain', edit_strain_path(@strain), class: 'btn btn-primary' %>
     </div>
   </div>
+
+  <h3>
+    Weight Adjustments
+  </h3>
+    <% unless @strain.wads.empty? %>
+      <table class="table table-striped">
+        <% wads = @strain.wads.to_a %>
+
+        <% (0..wads.size-2).each do |index| %>
+          <% wa = wads[index] %>
+          <tr>
+            <th><%= wa.created_at.strftime('%A %m/%d, %I:%M%p') %></th>
+            <td>Weight <%= wa.diference.negative? ? 'decreased' : 'increased' %> from <%= wads[wads.index(wa)+1].weight %> to <%= wa.weight %>
+              <span class="<%= wa.diference.negative? ? 'decreased' : 'increased' %>">(<%= '+'if wa.diference.positive? %><%= wa.diference %>)</span></td>
+          </tr>
+        <% end %>
+          <tr>
+            <th><%= wads.last.created_at.strftime('%A %m/%d, %I:%M%p') %></th>
+            <td>Weight initiated at <%= wads.last.weight %></td>
+          </tr>
+      </table>
+    <% end %>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205012555) do
+ActiveRecord::Schema.define(version: 20161208171813) do
 
   create_table "farms", force: :cascade do |t|
     t.string   "name"
@@ -25,11 +25,20 @@ ActiveRecord::Schema.define(version: 20161205012555) do
     t.float    "thc"
     t.float    "cbd"
     t.float    "purchase_price_per_gram"
-    t.float    "weight"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.float    "weight",                  default: 0.0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "farm_id"
     t.index ["farm_id"], name: "index_strains_on_farm_id"
+  end
+
+  create_table "wads", force: :cascade do |t|
+    t.float    "weight",     default: 0.0
+    t.float    "diference",  default: 0.0
+    t.integer  "strain_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["strain_id"], name: "index_wads_on_strain_id"
   end
 
 end
