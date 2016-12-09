@@ -12,7 +12,10 @@
 
       <tr>
         <th><%= f.label :county %></th>
-        <td><%= f.text_field :county, hide_label: true %></td>
+        <td>
+          <%= f.select :county, ['Mendocino', 'Humboldt', 'Trinity'],
+                        hide_label: true %>
+        </td>
       </tr>
     </table>
 
