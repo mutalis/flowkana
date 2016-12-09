@@ -4,10 +4,13 @@ class FarmsController < ApplicationController
   end
 
   def create
-    @farm = Farm.create(farm_params)
-
-    flash[:notice] = 'Farm successfully created.'
-    redirect_to :root
+    @farm = Farm.new(farm_params)
+    if @farm.save
+      flash[:notice] = 'Farm successfully created.'
+      redirect_to :root
+    else
+      render :new
+    end
   end
 
   private
